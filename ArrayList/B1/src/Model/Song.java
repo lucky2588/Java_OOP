@@ -38,6 +38,6 @@ public class Song{
 
     @Override
     public String toString() {
-        return "-"+id+". Name Song:"+fullName+" -Singer:"+singer+"\n";
+        return "-"+id+""+fullName+" debut: "+singer+"\n";
     }
 }
