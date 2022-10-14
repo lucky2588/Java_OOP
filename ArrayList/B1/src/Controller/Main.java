@@ -38,10 +38,10 @@ public class Main {
         listFollower1.add(user1);
         listFollower1.add(user2);
         //// ADD vào list 2 cho Idol 2
-        Follower user3 = follersADD.input();
         System.out.println("Import Flowers Three ");
-        Follower user4 = follersADD.input();
+        Follower user3 = follersADD.input();
         System.out.println("Import Flowers Four ");
+        Follower user4 = follersADD.input();
         ArrayList<Follower> listFollower2 = new ArrayList<>();
         listFollower2.add(user3);
         listFollower2.add(user4);
