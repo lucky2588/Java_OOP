@@ -47,6 +47,6 @@ private int numberOfLike;
 
     @Override
     public String toString() {
-        return " -"+fullName+"\t Like:"+numberOfLike;
+        return "\n -fullName: "+fullName+"\n Like: "+numberOfLike;
     }
 }
