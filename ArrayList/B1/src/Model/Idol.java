@@ -39,6 +39,6 @@ public class Idol {
 
     @Override
     public String toString() {
-        return " -Idol Name:"+fullName+" -Email"+email+" Followers:\n"+followers+"\n";
+        return " -Idol Name: "+fullName+" -Email "+email+"\n -Followers:\n"+followers+"\n";
     }
 }
