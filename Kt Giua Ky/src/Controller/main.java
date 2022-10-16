@@ -18,19 +18,19 @@ public class main {
         Scanner sc = new Scanner(System.in);
         Boolean checkOne = true;
         int checkNumber = 0;
-        do {
+        do{
             //Viết chương trình thực hiện:
             // 1. Đăng nhập , 2. Đăng Kí
-            System.out.println("List Now");
+            System.out.println("\t \t \t \t \t \t \t \tList Now");
             for (int i = 0; i < listAccount.size(); i++) {
-                System.out.println("-"+listAccount.get(i).toString());
+                System.out.println("- \t \t \t \t \t \t \t \t "+listAccount.get(i).toString());
             }
             System.out.println("==========Welcome to the endless plains==========");
-            System.out.printf(" \n 1.Log in \t 2.Register an account \n");
-            System.out.println("\n \n Choose : ");
+            System.out.printf(" \n \t 1.Log in \t 2.Register an account \t 0.Exit");
+            System.out.println("\n=>>Choose : ");
             int Choose = sc.nextInt();
             sc.nextLine();
-            switch (Choose) {
+           endProTotal: switch (Choose) {
                 case 1:
                     //Sử lí giao diện Đăng Nhập
                     System.out.println("enter account");
@@ -54,24 +54,29 @@ public class main {
                             endPro:
                             switch (decision) {
                                 case 1:
+                                    // Cho vòng While nếu sai thì cho đăng nhập lại
                                     System.out.println("Import Username new");
                                     String usernameNew = sc.nextLine();
-                                    if (checkID.matcher(usernameNew).find()) {
-                                        for (int j = 0; j < listAccount.size(); j++){
-                                            if (usernameNew.compareToIgnoreCase(listAccount.get(i).getUserName())!= 0){
+                                    if (checkID.matcher(usernameNew).find()){
+                                        for (int j = 0; j < listAccount.size(); j++) {
+                                            if (usernameNew.compareToIgnoreCase(listAccount.get(i).getUserName()) != 0) {
                                                 listAccount.get(i).setUserName(usernameNew);
                                                 System.out.println("Set Seccuress");
+                                                break;
                                             }else{
+                                                if(i < listAccount.size()-1)
+                                                    continue;
                                                 System.out.println("username already exists , please import Username diffirent ");
                                                 decision = 1;
                                                 break; // Chưa xử lí được vòng cho nhập lại Username
                                             }
                                         }
                                         // Xử Lí xong chức năng 1 khi đăng nhập đã thành công và nhập user hợp lệ
-                                    } else {
+                                    }else{
                                         System.out.println("Username  not valid .., Input Rs");
                                     }
                                     break;
+                            // móc vòng while điều kiện nhập lại User
                                 // Xử Lí xong chức năng 1 khi đăng nhập đã thành công
                                 case 2:
                                     System.out.println("Import Email you want change ");
@@ -96,7 +101,7 @@ public class main {
                                             System.out.println("The Same Password, please enter another password");
                                         }
                                     } else {
-                                        System.out.println("Passwd have keywork Not Vail !! ");
+                                        System.out.println("Passwd not enough condition !! ");
                                     }
                                     break; // Chức năng thứ 3 sau khi đăng nhập thành công , khi nhập không đúng MK mới chưa có bank về nhập lại MK
                                 case 4:
@@ -154,20 +159,20 @@ public class main {
                     break;
                 //Case 2 này xử lí phần đăng kí tài khoản ..........
                 case 2: // Xử Lí From Đăng Kí
-                    System.out.println("Import Email  ");
+                    System.out.println("Import Email , Have contain uppercase , lowcase , @ and . ");
                     String emailNew = sc.nextLine();
-                    System.out.println("Import Usernew");
+                    System.out.println("Import Usernew , have contain uppercase and lowcase ");
                     String usernameNew = sc.nextLine();
-                    System.out.println("Import PassWd");
+                    System.out.println("Import PassWd, Have contain Uppercase and LowCase ");
                     String passwdNew = sc.nextLine();
-                    if (checkID.matcher(usernameNew).find() && checkEmail.matcher(emailNew).find()) { // check Ký tự và yêu cầu về tk và email
-                        for (int i = 0; i < listAccount.size(); i++){
-                            if (usernameNew.equals(listAccount.get(i).getUserName()) && emailNew.equals(listAccount.get(i).getEmail())) {
+                    if(checkID.matcher(usernameNew).find() && checkEmail.matcher(emailNew).find()){ // check Ký tự và yêu cầu về tk và email
+                        for(int i = 0; i < listAccount.size(); i++){
+                            if(usernameNew.equals(listAccount.get(i).getUserName()) && emailNew.equals(listAccount.get(i).getEmail())) {
                                 System.out.println("Username or Email already exist ");
                                 System.out.println("Import once ");
                                 break;
                                 // chưa cho trở về vòng lặp nhập lại
-                            } else {
+                            }else{
                                 // Khởi tạo đối tượng và thêm Account new
                                 Account user2 = new Account(usernameNew, passwdNew, emailNew);
                                 listAccount.add(user2);
@@ -175,12 +180,18 @@ public class main {
                                 break;
                             }
                         }
-                    } else {
+                    }else{
                         System.out.println("Username or Email , PassWD not Vail , Note Char and String have with special Signature ");
                     }
+                    break;
                     // Phần cuối vòng lặp
+               case 0:
+                   checkOne = false;
+                   break;
+               default:
+                   System.out.println("Input Once numbers ( 1 or 2 ) ");
             }
-        } while (checkOne);
+        }while (checkOne);
         System.out.println("End Program");
     }
 }
