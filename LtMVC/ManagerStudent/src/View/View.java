@@ -26,24 +26,28 @@ public class View {
                     }
                     break;
                 case 2:
-                    boolean controlCase2 = true;
-                    while(controlCase2){
-                        System.out.println("Import A Littel Infor that people You want Look For and Display");
-                        System.out.println("import Year");
-                        int Year = sc.nextInt();
-                        sc.nextLine();
-                        System.out.println("Import Address");
-                        String address = sc.nextLine();
+                    if(!listStudent.isEmpty()) {
+                        boolean controlCase2 = true;
+                        while (controlCase2) {
+                            System.out.println("Import A Littel Infor that people You want Look For and Display");
+                            System.out.println("import Year");
+                            int Year = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Import Address");
+                            String address = sc.nextLine();
 
-                        // Tạo 1 Phương thức  check đúng sai , khi năm sinh or quê quán ko ai trùng hoặc nhập bừa
-                        if(manager.getClass10A1().checkCondition(listStudent,Year,address)){
-                            System.out.println(" display screen !!!!");
-                            controlCase2 = false;
-                            break;
-                        }else{
-                            System.out.println("No Student ,did you make a mistake? please re-enter !!!  ");
+                            // Tạo 1 Phương thức  check đúng sai , khi năm sinh or quê quán ko ai trùng hoặc nhập bừa
+                            if (manager.getClass10A1().checkCondition(listStudent, Year, address)) {
+                                System.out.println(" display screen !!!!");
+                                controlCase2 = false;
+                                break;
+                            } else {
+                                System.out.println("No Student ,did you make a mistake? please re-enter !!!  ");
+                            }
                         }
-                }
+                    }else{
+                        System.out.println("List Stundet not Menbers , please Input Information for Class 10A1  ");
+                    }
                     break;
                 case 3:
                     System.out.println("List Now of Class 10A1 that You Scan Infor ");
